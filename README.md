@@ -2,7 +2,9 @@
 
 A full-stack order analytics dashboard and data ingestion pipeline built with React, Node.js, and SQLite. It imports orders, product catalogs, and shipments across different formats (JSON, CSV, and XML), normalizes them into a relational database, calculates business metrics, and displays them in an interactive dashboard.
 
-🔗 **Live Demo**: [analytic-dashboard-iota.vercel.app](https://analytic-dashboard-iota.vercel.app/)
+🔗 **Live Frontend Demo**: [analytic-dashboard-iota.vercel.app](https://analytic-dashboard-iota.vercel.app/)  
+⚙️ **Backend REST API**: Connectable via Dashboard Settings (or set `VITE_API_URL` to your Render backend)  
+🩺 **Backend Health Check**: `GET /api/health`
 
 ---
 
