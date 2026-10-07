@@ -66,11 +66,18 @@ const SettingsPage = () => {
         <div className="p-6 space-y-6">
           {/* API URL Input */}
           <div>
-            <label className="block text-sm font-medium text-primary mb-1">Backend REST API URL</label>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-sm font-medium text-primary">Backend REST API URL</label>
+              <span className="text-[11px] text-secondary">e.g. Render / Railway / Localhost</span>
+            </div>
+            <p className="text-xs text-secondary mb-2.5">
+              Paste your deployed Node/Express backend URL here (e.g., <code className="bg-slate-100 px-1 py-0.5 rounded text-primary">https://your-backend.onrender.com/api</code>). 
+              External currency (Frankfurter) and demographic (REST Countries) APIs are public and do not require separate API keys.
+            </p>
             <div className="flex flex-col sm:flex-row gap-2.5">
               <input
                 type="text"
-                placeholder={import.meta.env.VITE_API_URL || "http://localhost:5000/api"}
+                placeholder={import.meta.env.VITE_API_URL || "https://your-backend.onrender.com/api"}
                 value={apiUrl}
                 onChange={handleUrlChange}
                 className="flex-1 px-3.5 py-2.5 border border-border rounded-lg text-sm font-mono focus:outline-none focus:border-accent"
@@ -79,7 +86,7 @@ const SettingsPage = () => {
                 <button
                   onClick={handleSaveAndTest}
                   disabled={backendStatus.checking}
-                  className="px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-medium hover:bg-slate-800 disabled:opacity-50 flex items-center gap-2 transition-colors shrink-0"
+                  className="flex-1 sm:flex-initial px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-medium hover:bg-slate-800 disabled:opacity-50 flex items-center justify-center gap-2 transition-colors shrink-0"
                 >
                   <RefreshCw size={14} className={backendStatus.checking ? 'animate-spin' : ''} />
                   Test & Save

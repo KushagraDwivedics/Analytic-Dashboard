@@ -65,51 +65,51 @@ const DeliveryPage = () => {
       </div>
 
       {/* Summary cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
         {loading ? (
-          [1,2,3].map(i => <div key={i} className="h-28 bg-surface border border-border rounded-xl animate-pulse"></div>)
+          [1,2,3].map(i => <div key={i} className="h-24 sm:h-28 bg-surface border border-border rounded-xl animate-pulse"></div>)
         ) : (
           <>
             <button
-              onClick={() => setStatusView(statusView === 'all' ? 'all' : 'all')}
-              className={`bg-surface p-5 rounded-xl border shadow-sm text-left ${statusView === 'all' ? 'border-accent ring-1 ring-accent/20' : 'border-border'}`}
+              onClick={() => setStatusView('all')}
+              className={`bg-surface p-4 sm:p-5 rounded-xl border shadow-sm text-left transition-all ${statusView === 'all' ? 'border-accent ring-1 ring-accent/20' : 'border-border hover:border-slate-300'}`}
             >
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center"><Truck size={20} className="text-accent" /></div>
-                <p className="text-sm font-medium text-secondary">Total Shipments</p>
+                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center shrink-0"><Truck size={20} className="text-accent" /></div>
+                <p className="text-xs sm:text-sm font-medium text-secondary truncate">Total Shipments</p>
               </div>
-              <p className="text-2xl font-bold text-primary">{total.toLocaleString()}</p>
+              <p className="text-xl sm:text-2xl font-bold text-primary">{total.toLocaleString()}</p>
             </button>
             <button
               onClick={() => setStatusView(statusView === 'Delivered' ? 'all' : 'Delivered')}
-              className={`bg-surface p-5 rounded-xl border shadow-sm text-left ${statusView === 'Delivered' ? 'border-green-500 ring-1 ring-green-500/20' : 'border-border'}`}
+              className={`bg-surface p-4 sm:p-5 rounded-xl border shadow-sm text-left transition-all ${statusView === 'Delivered' ? 'border-green-500 ring-1 ring-green-500/20' : 'border-border hover:border-slate-300'}`}
             >
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center"><PackageCheck size={20} className="text-green-600" /></div>
-                <p className="text-sm font-medium text-secondary">Delivered</p>
+                <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center shrink-0"><PackageCheck size={20} className="text-green-600" /></div>
+                <p className="text-xs sm:text-sm font-medium text-secondary truncate">Delivered</p>
               </div>
-              <p className="text-2xl font-bold text-green-700">{delivery?.delivered.toLocaleString()}</p>
+              <p className="text-xl sm:text-2xl font-bold text-green-700">{delivery?.delivered.toLocaleString()}</p>
               <p className="text-xs text-secondary mt-1">{total > 0 ? ((delivery.delivered / total) * 100).toFixed(1) : 0}% of total</p>
             </button>
             <button
               onClick={() => setStatusView(statusView === 'Delayed' ? 'all' : 'Delayed')}
-              className={`bg-surface p-5 rounded-xl border shadow-sm text-left ${statusView === 'Delayed' ? 'border-yellow-500 ring-1 ring-yellow-500/20' : 'border-border'}`}
+              className={`bg-surface p-4 sm:p-5 rounded-xl border shadow-sm text-left transition-all ${statusView === 'Delayed' ? 'border-yellow-500 ring-1 ring-yellow-500/20' : 'border-border hover:border-slate-300'}`}
             >
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center"><Clock size={20} className="text-yellow-600" /></div>
-                <p className="text-sm font-medium text-secondary">Delayed</p>
+                <div className="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center shrink-0"><Clock size={20} className="text-yellow-600" /></div>
+                <p className="text-xs sm:text-sm font-medium text-secondary truncate">Delayed</p>
               </div>
-              <p className="text-2xl font-bold text-yellow-700">{delivery?.delayed.toLocaleString()}</p>
+              <p className="text-xl sm:text-2xl font-bold text-yellow-700">{delivery?.delayed.toLocaleString()}</p>
               <p className="text-xs text-secondary mt-1">{total > 0 ? ((delivery.delayed / total) * 100).toFixed(1) : 0}% of total</p>
             </button>
           </>
         )}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mb-6">
         {/* Pie chart */}
-        <div className="bg-surface p-6 rounded-xl border border-border shadow-sm">
-          <h3 className="text-lg font-semibold text-primary mb-4">Delivery Split</h3>
+        <div className="bg-surface p-4 sm:p-6 rounded-xl border border-border shadow-sm">
+          <h3 className="text-base sm:text-lg font-semibold text-primary mb-4">Delivery Split</h3>
           {loading ? (
             <div className="h-64 bg-slate-100 animate-pulse rounded"></div>
           ) : (

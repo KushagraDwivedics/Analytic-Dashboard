@@ -53,24 +53,24 @@ const ProductsPage = () => {
       </div>
 
       {/* Category summary cards */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 mb-6">
         {Object.entries(categoryGroups).map(([cat, info]) => (
           <button
             key={cat}
             onClick={() => setCategoryFilter(categoryFilter === cat ? '' : cat)}
-            className={`bg-surface p-4 rounded-xl border shadow-sm text-left transition-all ${
+            className={`bg-surface p-3 sm:p-4 rounded-xl border shadow-sm text-left transition-all ${
               categoryFilter === cat ? 'border-accent ring-1 ring-accent/20' : 'border-border hover:border-slate-300'
             }`}
           >
-            <p className="text-xs font-medium text-secondary uppercase">{cat}</p>
-            <p className="text-xl font-bold text-primary mt-1">{info.count}</p>
+            <p className="text-xs font-medium text-secondary uppercase truncate">{cat}</p>
+            <p className="text-lg sm:text-xl font-bold text-primary mt-1">{info.count}</p>
             <p className="text-xs text-secondary">products</p>
           </button>
         ))}
       </div>
 
       {/* Search */}
-      <div className="bg-surface p-4 rounded-xl border border-border shadow-sm mb-6 flex flex-col md:flex-row gap-4">
+      <div className="bg-surface p-3 sm:p-4 rounded-xl border border-border shadow-sm mb-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
         <div className="flex-1 relative">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary" />
           <input
@@ -82,7 +82,7 @@ const ProductsPage = () => {
           />
         </div>
         {categoryFilter && (
-          <button onClick={() => setCategoryFilter('')} className="px-4 py-2 bg-slate-100 text-primary rounded-md text-sm hover:bg-slate-200">
+          <button onClick={() => setCategoryFilter('')} className="px-4 py-2 bg-slate-100 text-primary rounded-md text-sm hover:bg-slate-200 shrink-0">
             Clear Filter: {categoryFilter}
           </button>
         )}
@@ -90,7 +90,7 @@ const ProductsPage = () => {
 
       {/* Product grid */}
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {[1,2,3,4,5,6].map(i => (
             <div key={i} className="h-36 bg-surface border border-border rounded-xl animate-pulse"></div>
           ))}

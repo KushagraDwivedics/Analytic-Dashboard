@@ -11,6 +11,7 @@ import SettingsPage from './components/SettingsPage';
 
 function App() {
   const [currentRoute, setCurrentRoute] = useState('Dashboard');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const renderPage = () => {
     switch (currentRoute) {
@@ -35,10 +36,19 @@ function App() {
 
   return (
     <div className="flex h-screen bg-background font-sans overflow-hidden">
-      <Sidebar currentRoute={currentRoute} setCurrentRoute={setCurrentRoute} />
+      <Sidebar 
+        currentRoute={currentRoute} 
+        setCurrentRoute={setCurrentRoute} 
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
+      />
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
-        <Header currentRoute={currentRoute} onNavigate={setCurrentRoute} />
-        <main className="flex-1 overflow-y-auto p-4 md:p-8">
+        <Header 
+          currentRoute={currentRoute} 
+          onNavigate={setCurrentRoute}
+          setMobileMenuOpen={setMobileMenuOpen}
+        />
+        <main className="flex-1 overflow-y-auto p-3 sm:p-5 md:p-8">
           {renderPage()}
         </main>
       </div>

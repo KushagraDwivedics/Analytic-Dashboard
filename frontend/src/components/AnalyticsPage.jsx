@@ -58,70 +58,69 @@ const AnalyticsPage = () => {
         <h2 className="text-2xl font-bold text-primary">Analytics</h2>
         <p className="text-sm text-secondary mt-1">Deep-dive into business performance metrics.</p>
       </div>
-
       {/* Extended KPI cards */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-6">
         {loading ? (
           [1,2,3,4,5,6].map(i => (
-            <div key={i} className="bg-surface p-4 rounded-xl border border-border animate-pulse h-24"></div>
+            <div key={i} className="bg-surface p-3.5 sm:p-4 rounded-xl border border-border animate-pulse h-24"></div>
           ))
         ) : summary ? (
           <>
-            <div className="bg-surface p-4 rounded-xl border border-border shadow-sm">
+            <div className="bg-surface p-3.5 sm:p-4 rounded-xl border border-border shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <ShoppingBag size={14} className="text-accent" />
-                <p className="text-xs font-medium text-secondary">Total Orders</p>
+                <p className="text-xs font-medium text-secondary truncate">Total Orders</p>
               </div>
-              <p className="text-xl font-bold text-primary">{summary.totalOrders.toLocaleString()}</p>
+              <p className="text-lg sm:text-xl font-bold text-primary truncate">{summary.totalOrders.toLocaleString()}</p>
             </div>
-            <div className="bg-surface p-4 rounded-xl border border-border shadow-sm">
+            <div className="bg-surface p-3.5 sm:p-4 rounded-xl border border-border shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <DollarSign size={14} className="text-green-600" />
-                <p className="text-xs font-medium text-secondary">Revenue</p>
+                <p className="text-xs font-medium text-secondary truncate">Revenue</p>
               </div>
-              <p className="text-xl font-bold text-primary">₹{summary.totalRevenue.toLocaleString()}</p>
+              <p className="text-lg sm:text-xl font-bold text-primary truncate">₹{summary.totalRevenue.toLocaleString()}</p>
             </div>
-            <div className="bg-surface p-4 rounded-xl border border-border shadow-sm">
+            <div className="bg-surface p-3.5 sm:p-4 rounded-xl border border-border shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <TrendingUp size={14} className="text-accent" />
-                <p className="text-xs font-medium text-secondary">Avg Order</p>
+                <p className="text-xs font-medium text-secondary truncate">Avg Order</p>
               </div>
-              <p className="text-xl font-bold text-primary">₹{Math.round(summary.averageOrderValue).toLocaleString()}</p>
+              <p className="text-lg sm:text-xl font-bold text-primary truncate">₹{Math.round(summary.averageOrderValue).toLocaleString()}</p>
             </div>
-            <div className="bg-surface p-4 rounded-xl border border-border shadow-sm">
+            <div className="bg-surface p-3.5 sm:p-4 rounded-xl border border-border shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <PackageCheck size={14} className="text-green-600" />
-                <p className="text-xs font-medium text-secondary">Delivered</p>
+                <p className="text-xs font-medium text-secondary truncate">Delivered</p>
               </div>
-              <p className="text-xl font-bold text-primary">{summary.deliveredOrders.toLocaleString()}</p>
+              <p className="text-lg sm:text-xl font-bold text-primary truncate">{summary.deliveredOrders.toLocaleString()}</p>
             </div>
-            <div className="bg-surface p-4 rounded-xl border border-border shadow-sm">
+            <div className="bg-surface p-3.5 sm:p-4 rounded-xl border border-border shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <Clock size={14} className="text-yellow-600" />
-                <p className="text-xs font-medium text-secondary">Delayed</p>
+                <p className="text-xs font-medium text-secondary truncate">Delayed</p>
               </div>
-              <p className="text-xl font-bold text-primary">{summary.delayedOrders.toLocaleString()}</p>
+              <p className="text-lg sm:text-xl font-bold text-primary truncate">{summary.delayedOrders.toLocaleString()}</p>
             </div>
-            <div className="bg-surface p-4 rounded-xl border border-border shadow-sm">
+            <div className="bg-surface p-3.5 sm:p-4 rounded-xl border border-border shadow-sm">
               <div className="flex items-center gap-2 mb-2">
                 <TrendingDown size={14} className="text-secondary" />
-                <p className="text-xs font-medium text-secondary">Avg Days</p>
+                <p className="text-xs font-medium text-secondary truncate">Avg Days</p>
               </div>
-              <p className="text-xl font-bold text-primary">{summary.averageDeliveryDays}</p>
+              <p className="text-lg sm:text-xl font-bold text-primary truncate">{summary.averageDeliveryDays}</p>
             </div>
           </>
         ) : null}
       </div>
 
       {/* Revenue trend full width */}
-      <div className="bg-surface p-6 rounded-xl border border-border shadow-sm mb-6">
-        <h3 className="text-lg font-semibold text-primary mb-4">Revenue Trend</h3>
+      <div className="bg-surface p-4 sm:p-6 rounded-xl border border-border shadow-sm mb-6">
+        <h3 className="text-base sm:text-lg font-semibold text-primary mb-4">Revenue Trend</h3>
         {loading ? (
-          <div className="h-72 bg-slate-100 animate-pulse rounded"></div>
+          <div className="h-64 sm:h-72 bg-slate-100 animate-pulse rounded"></div>
         ) : (
-          <div className="h-72">
+          <div className="h-64 sm:h-72">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={revenue} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+              <AreaChart data={revenue} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
                 <defs>
                   <linearGradient id="gradRevenue" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3} />
@@ -129,8 +128,8 @@ const AnalyticsPage = () => {
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} />
-                <YAxis tickFormatter={formatCurrency} axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} />
+                <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b' }} />
+                <YAxis tickFormatter={formatCurrency} axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#64748b' }} dx={-5} />
                 <Tooltip contentStyle={{ borderRadius: '8px', border: '1px solid #e2e8f0' }} formatter={(v) => [`₹${v.toLocaleString()}`, 'Revenue']} />
                 <Area type="monotone" dataKey="revenue" stroke="#3b82f6" strokeWidth={2} fillOpacity={1} fill="url(#gradRevenue)" />
               </AreaChart>
@@ -140,9 +139,9 @@ const AnalyticsPage = () => {
       </div>
 
       {/* Two columns: Orders trend + Category comparison */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <div className="bg-surface p-6 rounded-xl border border-border shadow-sm">
-          <h3 className="text-lg font-semibold text-primary mb-4">Orders Trend</h3>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
+        <div className="bg-surface p-4 sm:p-6 rounded-xl border border-border shadow-sm">
+          <h3 className="text-base sm:text-lg font-semibold text-primary mb-4">Orders Trend</h3>
           {loading ? (
             <div className="h-64 bg-slate-100 animate-pulse rounded"></div>
           ) : (

@@ -54,7 +54,7 @@ const OrdersPage = () => {
       </div>
 
       {/* Filters */}
-      <div className="bg-surface p-4 rounded-xl border border-border shadow-sm mb-6 flex flex-col md:flex-row gap-4">
+      <div className="bg-surface p-3 sm:p-4 rounded-xl border border-border shadow-sm mb-6 flex flex-col sm:flex-row gap-3">
         <div className="flex-1 relative">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary" />
           <input
@@ -65,27 +65,29 @@ const OrdersPage = () => {
             className="w-full pl-9 pr-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:border-accent"
           />
         </div>
-        <select
-          value={categoryFilter}
-          onChange={(e) => { setCategoryFilter(e.target.value); setCurrentPage(1); }}
-          className="px-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:border-accent"
-        >
-          <option value="">All Categories</option>
-          <option value="Electronics">Electronics</option>
-          <option value="Furniture">Furniture</option>
-          <option value="Clothing">Clothing</option>
-          <option value="Toys">Toys</option>
-          <option value="Books">Books</option>
-        </select>
-        <select
-          value={statusFilter}
-          onChange={(e) => { setStatusFilter(e.target.value); setCurrentPage(1); }}
-          className="px-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:border-accent"
-        >
-          <option value="">All Statuses</option>
-          <option value="Delivered">Delivered</option>
-          <option value="Delayed">Delayed</option>
-        </select>
+        <div className="flex gap-2">
+          <select
+            value={categoryFilter}
+            onChange={(e) => { setCategoryFilter(e.target.value); setCurrentPage(1); }}
+            className="flex-1 sm:flex-initial px-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:border-accent"
+          >
+            <option value="">All Categories</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Toys">Toys</option>
+            <option value="Books">Books</option>
+          </select>
+          <select
+            value={statusFilter}
+            onChange={(e) => { setStatusFilter(e.target.value); setCurrentPage(1); }}
+            className="flex-1 sm:flex-initial px-3 py-2 border border-border rounded-md text-sm focus:outline-none focus:border-accent"
+          >
+            <option value="">All Statuses</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Delayed">Delayed</option>
+          </select>
+        </div>
       </div>
 
       {/* Table */}
@@ -145,10 +147,11 @@ const OrdersPage = () => {
           </div>
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="p-4 border-t border-border flex items-center justify-between text-sm">
-              <p className="text-secondary">Showing {(currentPage - 1) * perPage + 1}–{Math.min(currentPage * perPage, filtered.length)} of {filtered.length}</p>
-              <div className="flex gap-2">
+            <div className="p-3 sm:p-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm">
+              <p className="text-secondary text-center sm:text-left">Showing {(currentPage - 1) * perPage + 1}–{Math.min(currentPage * perPage, filtered.length)} of {filtered.length} orders</p>
+              <div className="flex items-center gap-2">
                 <button disabled={currentPage === 1} onClick={() => setCurrentPage(p => p - 1)} className="p-1.5 border border-border rounded hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"><ChevronLeft size={16} /></button>
+                <span className="text-xs text-secondary font-medium px-1">Page {currentPage} of {totalPages}</span>
                 <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(p => p + 1)} className="p-1.5 border border-border rounded hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed"><ChevronRight size={16} /></button>
               </div>
             </div>

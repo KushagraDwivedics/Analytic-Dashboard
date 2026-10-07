@@ -27,23 +27,23 @@ export const CategoryDrawer = ({ categoryData, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
-      <div className="absolute inset-0 bg-slate-900/20 backdrop-blur-sm" onClick={onClose}></div>
-      <div className="relative w-full max-w-md bg-surface h-full shadow-2xl flex flex-col transform transition-transform animate-in slide-in-from-right">
-        <div className="p-6 border-b border-border flex items-center justify-between">
-          <h2 className="text-xl font-bold text-primary uppercase">{categoryData.category} DETAILS</h2>
+      <div className="absolute inset-0 bg-slate-900/30 backdrop-blur-xs" onClick={onClose}></div>
+      <div className="relative w-full sm:max-w-md bg-surface h-full shadow-2xl flex flex-col transform transition-transform animate-in slide-in-from-right duration-200">
+        <div className="p-4 sm:p-6 border-b border-border flex items-center justify-between">
+          <h2 className="text-lg sm:text-xl font-bold text-primary uppercase">{categoryData.category} DETAILS</h2>
           <button onClick={onClose} className="p-2 text-secondary hover:text-primary rounded-full hover:bg-slate-100 transition-colors">
             <X size={20} />
           </button>
         </div>
-        <div className="p-6 overflow-y-auto flex-1">
-          <div className="grid grid-cols-2 gap-4 mb-8">
-            <div className="bg-slate-50 p-4 rounded-lg border border-border">
+        <div className="p-4 sm:p-6 overflow-y-auto flex-1">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <div className="bg-slate-50 p-3 sm:p-4 rounded-lg border border-border">
               <p className="text-xs font-medium text-secondary mb-1">REVENUE</p>
-              <p className="text-xl font-semibold text-primary">₹{categoryData.revenue.toLocaleString()}</p>
+              <p className="text-lg sm:text-xl font-semibold text-primary">₹{categoryData.revenue.toLocaleString()}</p>
             </div>
-            <div className="bg-slate-50 p-4 rounded-lg border border-border">
+            <div className="bg-slate-50 p-3 sm:p-4 rounded-lg border border-border">
               <p className="text-xs font-medium text-secondary mb-1">ORDERS</p>
-              <p className="text-xl font-semibold text-primary">{categoryData.orders.toLocaleString()}</p>
+              <p className="text-lg sm:text-xl font-semibold text-primary">{categoryData.orders.toLocaleString()}</p>
             </div>
           </div>
 
@@ -59,17 +59,17 @@ export const CategoryDrawer = ({ categoryData, onClose }) => {
           ) : products.length > 0 ? (
             <div className="space-y-3">
               {products.map(product => (
-                <div key={product.id} className="p-4 rounded-lg border border-border flex justify-between items-center bg-white shadow-sm hover:shadow-md transition-shadow">
+                <div key={product.id} className="p-3.5 sm:p-4 rounded-lg border border-border flex justify-between items-center bg-white shadow-sm hover:shadow-md transition-shadow">
                   <div>
-                    <p className="font-medium text-primary">{product.name}</p>
+                    <p className="font-medium text-primary text-sm sm:text-base">{product.name}</p>
                     <p className="text-xs text-secondary">ID: {product.id}</p>
                   </div>
-                  <p className="font-semibold text-primary">₹{product.price.toLocaleString()}</p>
+                  <p className="font-semibold text-primary text-sm sm:text-base">₹{product.price.toLocaleString()}</p>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="p-6 text-center text-secondary bg-slate-50 rounded-lg border border-border">
+            <div className="p-6 text-center text-secondary bg-slate-50 rounded-lg border border-border text-sm">
               No product-level information available.
             </div>
           )}
@@ -84,15 +84,15 @@ export const OrderDrawer = ({ orderData, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
-      <div className="absolute inset-0 bg-slate-900/20 backdrop-blur-sm" onClick={onClose}></div>
-      <div className="relative w-full max-w-md bg-surface h-full shadow-2xl flex flex-col transform transition-transform animate-in slide-in-from-right">
-        <div className="p-6 border-b border-border flex items-center justify-between">
-          <h2 className="text-xl font-bold text-primary">Order {orderData.orderId}</h2>
+      <div className="absolute inset-0 bg-slate-900/30 backdrop-blur-xs" onClick={onClose}></div>
+      <div className="relative w-full sm:max-w-md bg-surface h-full shadow-2xl flex flex-col transform transition-transform animate-in slide-in-from-right duration-200">
+        <div className="p-4 sm:p-6 border-b border-border flex items-center justify-between">
+          <h2 className="text-lg sm:text-xl font-bold text-primary">Order {orderData.orderId}</h2>
           <button onClick={onClose} className="p-2 text-secondary hover:text-primary rounded-full hover:bg-slate-100 transition-colors">
             <X size={20} />
           </button>
         </div>
-        <div className="p-6 overflow-y-auto flex-1 space-y-6">
+        <div className="p-4 sm:p-6 overflow-y-auto flex-1 space-y-6">
           <div className="grid grid-cols-2 gap-y-6 gap-x-4">
             <div>
               <p className="text-xs font-medium text-secondary mb-1">CUSTOMER</p>
