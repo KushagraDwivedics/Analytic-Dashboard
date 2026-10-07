@@ -28,11 +28,11 @@ const Sidebar = ({ currentRoute, setCurrentRoute, mobileMenuOpen, setMobileMenuO
           </div>
           <h1 className="text-xl font-bold text-primary tracking-tight">Analytics Pro</h1>
         </div>
-        {/* Mobile close button */}
+        {/* Mobile/Tablet close button */}
         {setMobileMenuOpen && (
           <button
             onClick={() => setMobileMenuOpen(false)}
-            className="md:hidden p-1.5 text-secondary hover:text-primary rounded-lg hover:bg-slate-100 transition-colors"
+            className="lg:hidden p-1.5 text-secondary hover:text-primary rounded-lg hover:bg-slate-100 transition-colors"
             aria-label="Close navigation menu"
           >
             <X size={20} />
@@ -70,22 +70,22 @@ const Sidebar = ({ currentRoute, setCurrentRoute, mobileMenuOpen, setMobileMenuO
 
   return (
     <>
-      {/* Desktop Persistent Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 bg-surface border-r border-border h-full shrink-0">
+      {/* Desktop Persistent Sidebar (Only on screens >= 1024px) */}
+      <aside className="hidden lg:flex flex-col w-64 bg-surface border-r border-border h-full shrink-0">
         {navContent}
       </aside>
 
-      {/* Mobile Slide-Over Drawer with Backdrop */}
+      {/* Mobile & Tablet Slide-Over Drawer with Backdrop (< 1024px) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden flex">
+        <div className="fixed inset-0 z-50 lg:hidden flex">
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity animate-in fade-in"
+            className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity animate-in fade-in"
             onClick={() => setMobileMenuOpen(false)}
           />
 
           {/* Drawer Content */}
-          <div className="relative flex flex-col w-72 max-w-[80vw] bg-surface h-full shadow-2xl z-10 animate-in slide-in-from-left duration-200">
+          <div className="relative flex flex-col w-72 max-w-[85vw] bg-surface h-full shadow-2xl z-10 animate-in slide-in-from-left duration-200">
             {navContent}
           </div>
         </div>

@@ -15,24 +15,24 @@ const Header = ({ currentRoute, setMobileMenuOpen }) => {
   return (
     <header className="h-16 border-b border-border bg-surface px-4 sm:px-6 flex items-center justify-between flex-shrink-0 z-30">
       <div className="flex items-center gap-3">
-        {/* Mobile menu hamburger button */}
+        {/* Mobile & Tablet hamburger button */}
         <button
           onClick={() => setMobileMenuOpen && setMobileMenuOpen(true)}
-          className="md:hidden p-2 text-secondary hover:text-primary rounded-lg hover:bg-slate-100 transition-colors"
+          className="lg:hidden p-2 text-secondary hover:text-primary rounded-lg hover:bg-slate-100 transition-colors focus:outline-none"
           aria-label="Open navigation menu"
         >
           <Menu size={22} />
         </button>
 
-        {/* Mobile brand indicator */}
-        <div className="flex md:hidden items-center gap-1.5 text-accent font-bold text-sm mr-2 border-r border-border pr-3">
+        {/* Mobile & Tablet brand indicator */}
+        <div className="flex lg:hidden items-center gap-1.5 text-accent font-bold text-sm mr-2 border-r border-border pr-3">
           <Activity size={18} />
           <span>Analytics</span>
         </div>
 
         <div>
           <h2 className="text-base sm:text-lg font-bold text-primary tracking-tight">{currentRoute}</h2>
-          <p className="text-xs text-secondary hidden lg:block truncate max-w-xl">
+          <p className="text-xs text-secondary hidden xl:block truncate max-w-xl">
             {subtitles[currentRoute] || 'Overview and key metrics.'}
           </p>
         </div>
